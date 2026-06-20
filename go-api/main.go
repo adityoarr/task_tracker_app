@@ -21,7 +21,6 @@ var db *gorm.DB
 
 func initDB() {
 	var err error
-	// Menyimpan file database.db di root folder backend
 	db, err = gorm.Open(sqlite.Open("database.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Gagal terkoneksi ke database SQLite")
@@ -33,12 +32,16 @@ func main() {
 	initDB()
 	r := gin.Default()
 
-	// Mengizinkan koneksi dari Flutter emulator/device
 	r.Use(cors.Default())
 
 	r.GET("/tasks", func(c *gin.Context) {
 		var tasks []Task
-		db.Find(&tasks)
+		page := c.DefaultQuery("page", "1")
+		limit := c.DefaultQuery("limit", "10")
+		
+		offset := (parseToInt(page) - 1) * parseToInt(limit)
+
+		db.Limit(parseToInt(limit)).Offset(offset).Find(&tasks)
 		c.JSON(http.StatusOK, tasks)
 	})
 

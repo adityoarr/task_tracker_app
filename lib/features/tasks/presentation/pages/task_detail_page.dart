@@ -29,7 +29,7 @@ class TaskDetailPage extends StatelessWidget {
             border: Border.all(color: Colors.grey.shade200),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.03),
+                color: Colors.black.withValues(alpha: 0.03),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -38,7 +38,6 @@ class TaskDetailPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Bagian Header (Status & ID)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -66,8 +65,7 @@ class TaskDetailPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              
-              // Bagian Judul
+
               Text(
                 task.title,
                 style: const TextStyle(
@@ -81,8 +79,7 @@ class TaskDetailPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Divider(),
               ),
-              
-              // Bagian Deskripsi
+
               Text(
                 'Deskripsi Pekerjaan',
                 style: TextStyle(
@@ -97,7 +94,7 @@ class TaskDetailPage extends StatelessWidget {
                 task.description,
                 style: const TextStyle(
                   fontSize: 16,
-                  height: 1.6, // Jarak antar baris (Line height) agar mudah dibaca
+                  height: 1.6,
                   color: Colors.black87,
                 ),
               ),

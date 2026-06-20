@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../core/widgets/custom_text_field.dart';
 import '../state/task_provider.dart';
 
 class AddTaskPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _descController = TextEditingController();
-  bool _isLoading = false; // State untuk mengunci tombol saat loading
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -25,22 +26,19 @@ class _AddTaskPageState extends State<AddTaskPage> {
   void _submit() async {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
-      
+
       try {
         final provider = context.read<TaskProvider>();
         await provider.repository.addTask(
           _titleController.text,
           _descController.text,
         );
-        await provider.fetchTasks(); 
+        await provider.fetchTasks(isRefresh: true);
         if (mounted) Navigator.pop(context);
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Gagal menambah task: $e'),
-              backgroundColor: Colors.red.shade600,
-            ),
+            SnackBar(content: Text('Gagal menambah task: $e'), backgroundColor: Colors.red.shade600),
           );
         }
       } finally {
@@ -71,36 +69,28 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 style: TextStyle(fontSize: 16, color: Colors.grey.shade700, fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 24),
-              TextFormField(
+
+              CustomTextField(
                 controller: _titleController,
                 enabled: !_isLoading,
-                decoration: InputDecoration(
-                  labelText: 'Judul Task',
-                  hintText: 'Misal: Meeting mingguan',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  filled: true,
-                  fillColor: Colors.grey.shade50,
-                ),
+                label: 'Judul Task',
+                hint: 'Misal: Meeting mingguan',
                 validator: (value) => value == null || value.trim().isEmpty ? 'Judul wajib diisi' : null,
               ),
               const SizedBox(height: 20),
-              TextFormField(
+
+              CustomTextField(
                 controller: _descController,
                 enabled: !_isLoading,
                 maxLines: 4,
-                decoration: InputDecoration(
-                  labelText: 'Deskripsi Detail',
-                  hintText: 'Tuliskan detail pekerjaan di sini...',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  filled: true,
-                  fillColor: Colors.grey.shade50,
-                  alignLabelWithHint: true, // Label tetap di atas meski maxLines > 1
-                ),
+                label: 'Deskripsi Detail',
+                hint: 'Tuliskan detail pekerjaan di sini...',
                 validator: (value) => value == null || value.trim().isEmpty ? 'Deskripsi wajib diisi' : null,
               ),
               const SizedBox(height: 32),
+
               SizedBox(
-                height: 54, // Tinggi tombol standar industri
+                height: 54,
                 child: ElevatedButton(
                   onPressed: _isLoading ? null : _submit,
                   style: ElevatedButton.styleFrom(
@@ -111,10 +101,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                   child: _isLoading
                       ? const SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5),
-                        )
+                    height: 24, width: 24,
+                    child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5),
+                  )
                       : const Text('Simpan Task', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
               ),
