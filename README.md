@@ -10,7 +10,7 @@ Aplikasi ini mencakup seluruh fitur utama (melihat, menambah, mengubah status, d
 
 ### 1. Menjalankan Backend (Golang + SQLite + Docker)
 *Backend* menggunakan Golang *backend implementation* yang dibungkus dengan Docker.
-Pastikan Docker Daemon sudah berjalan di PC Desktop Anda. Masuk ke direktori `backend/`, lalu jalankan:
+Pastikan Docker Daemon sudah berjalan di PC Desktop Anda. Masuk ke direktori `go-api/`, lalu jalankan:
 
 ```bash
 # Membangun Docker image (Multi-stage build dengan CGO untuk SQLite)
