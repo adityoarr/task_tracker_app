@@ -14,10 +14,10 @@ Pastikan Docker Daemon sudah berjalan di PC Desktop Anda. Masuk ke direktori `go
 
 ```bash
 # Membangun Docker image (Multi-stage build dengan CGO untuk SQLite)
-docker build -t task-backend .
+docker build -t go-api .
 
 # Menjalankan container dengan volume mapping agar database persisten
-docker run -d -p 8080:8080 -v $(pwd):/app --name task_api task-backend
+docker run -d -p 8080:8080 -v $(pwd):/app --name task_api go-api
 ```
 
 ### 2. Menjalankan Frontend (Flutter App)
