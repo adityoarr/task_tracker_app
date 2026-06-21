@@ -54,4 +54,10 @@ Selain kebutuhan API dasar (GET, POST, PATCH), aplikasi ini mengimplementasikan 
 - CI/CD Sederhana: Terdapat skrip otomasi GitHub Actions (.github/workflows/flutter_ci.yml) untuk pengujian dan build otomatis setiap kali terjadi pembaruan kode.
 
 # 📸 Demo Aplikasi
+## 1. Screenshot
+<img width="1080" height="2340" alt="Screenshot_20260621_140156" src="https://github.com/user-attachments/assets/c4eb01e9-03ae-40db-af15-39f577578a16" />
+<img width="1080" height="2340" alt="Screenshot_20260621_140205" src="https://github.com/user-attachments/assets/058686c7-f91f-4623-80f3-b09d12b65a84" />
+<img width="1080" height="2340" alt="Screenshot_20260621_140214" src="https://github.com/user-attachments/assets/bcb1d9de-7ed0-4238-9f9d-a47f85bc5fdf" />
 
+## 2. Video
+https://github.com/user-attachments/assets/059cb67d-122e-4e13-9b1d-3fcafdd640a8
