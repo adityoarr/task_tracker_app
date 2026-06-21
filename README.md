@@ -17,7 +17,7 @@ Pastikan Docker Daemon sudah berjalan di PC Desktop Anda. Masuk ke direktori `go
 docker build -t go-api .
 
 # Menjalankan container dengan volume mapping agar database persisten
-docker run -d -p 8080:8080 -v $(pwd):/app --name task_api go-api
+docker run -d -p 8080:8080 --name task_api go-api
 ```
 
 ### 2. Menjalankan Frontend (Flutter App)
