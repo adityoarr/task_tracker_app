@@ -55,7 +55,7 @@ Selain kebutuhan API dasar (GET, POST, PATCH), aplikasi ini mengimplementasikan 
 
 # 📸 Demo Aplikasi
 ## 1. Screenshot
-<img width="590" height="700" alt="Screenshot_20260621_140156" src="https://github.com/user-attachments/assets/c4eb01e9-03ae-40db-af15-39f577578a16" />
+<img width="300" alt="Screenshot_20260621_140156" src="https://github.com/user-attachments/assets/c4eb01e9-03ae-40db-af15-39f577578a16" />
 <img width="1080" height="2340" alt="Screenshot_20260621_140205" src="https://github.com/user-attachments/assets/058686c7-f91f-4623-80f3-b09d12b65a84" />
 <img width="1080" height="2340" alt="Screenshot_20260621_140214" src="https://github.com/user-attachments/assets/bcb1d9de-7ed0-4238-9f9d-a47f85bc5fdf" />
 
